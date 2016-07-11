@@ -1,11 +1,11 @@
-# stc-replace
+# stc-bomdetector
 
-Content replace for stc, Support string & regular expression
+Detect BOM in files.
 
 ## Install
 
 ```sh
-npm install stc-replace
+npm install stc-bomdetector
 ```
 
 ## How to use
@@ -13,7 +13,7 @@ npm install stc-replace
 ```
 var BOMDetector = require('stc-bomdetector');
 
-stc.workflow({
+stc.lint({
   BOMDetector: {plugin: BOMDetector, include: [/\.(js|css|html)/, {type: 'tpl'}]}
-})
+});
 ```
