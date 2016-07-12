@@ -1,7 +1,4 @@
 import Plugin from 'stc-plugin';
-import {extend, isString, isArray} from 'stc-helper';
-
-let options;
 
 export default class BOMDetectorPlugin extends Plugin {
   /**
