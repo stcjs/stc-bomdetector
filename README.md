@@ -1,6 +1,6 @@
 # stc-bomdetector
 
-Detect BOM in files.
+Detect and remove BOM in files.
 
 ## Install
 

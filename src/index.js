@@ -9,36 +9,40 @@ export default class BOMDetectorPlugin extends Plugin {
    * {[string]}
    */
   detectBOM(str) {
-    // let bom_char = '\ufeff';
+    let bom_char_reg = /^\ufeff/;
     let bom_char_code = 65279;
+
     if(str.charCodeAt(0) === bom_char_code) {
-      return true;
+      return {
+        error: true,
+        message: 'file with BOM',
+        line: 0,
+        column: 0,
+        content: str.replace(bom_char_reg, "")
+      };
     }
-    return false;
+    return {
+      error: false,
+      content: str
+    }
   }
 
   /**
    * run
    */
   async run() {
-    
     let content = await this.getContent('utf-8');
-    if(this.detectBOM(content)) {
-      return {
-        message: 'file with BOM',
-        line: 0,
-        column: 0
-      }
-    }
-    return false;
+    let data = this.detectBOM(content);
+    return data;
   }
   /**
    * update
    */
   update(data) {
-    if(data) {
+    if(data.error) {
       this.error(data.message, data.line, data.column);
     }
+    this.setContent(data.content);
   }
 
   /**
