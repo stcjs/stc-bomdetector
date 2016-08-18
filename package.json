@@ -1,7 +1,7 @@
 {
   "name": "stc-bomdetector",
-  "description": "Virtual file for stc",
-  "version": "1.0.2",
+  "description": "Detect BOM in files for stc",
+  "version": "1.0.0",
   "author": {
     "name": "huangxiaolu",
     "email": "lu.huang90@gmail.com"
